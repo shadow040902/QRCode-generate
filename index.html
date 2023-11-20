@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="content">
+        <h1>QR Code Generator</h1>
+        <input type="text" id="urlInput" placeholder="Enter URL">
+        <button id="generateButton" onclick="generateQRCode()">Generate QR Code</button>
+        <div id="qrcode-container">
+            <div id="qrcode"></div>
+        </div>
+    </div>
+    <script>
+        function generateQRCode(){
+            var urlInput = document.getElementById("urlInput");
+            var url = urlInput.value;
+            var qrcodeDIV = document.getElementById("qrcode");
+            if (url.trim() !== "") {
+                qrcodeDIV.innerHTML = "";
+                var qrcode = new QRCode(qrcodeDIV, {
+                    text: url,
+                    width: 128,
+                    height: 128,
+                });
+            } else {
+                alert(" Làm ơn dán link trước khi bấm Generate QR Code.");
+            }
+        }
+    </script>
+</body>
+</html>
